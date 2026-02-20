@@ -1,22 +1,37 @@
+function Logo({ bg = "dark" }: { bg?: "dark" | "light" }) {
+  return (
+    <span
+      className="text-2xl font-bold tracking-tight"
+      style={{ fontFamily: "var(--font-space-grotesk)" }}
+    >
+      <span
+        className="bg-clip-text text-transparent"
+        style={{ backgroundImage: "linear-gradient(to right, #00d4ff, #7c3aed)" }}
+      >
+        human
+      </span>
+      <span style={{ color: bg === "dark" ? "#ffffff" : "#0a0a0f" }}>ents</span>
+    </span>
+  );
+}
+
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#0a0a0f] text-white flex flex-col items-center justify-center px-6">
+    <main className="min-h-screen bg-[#0a0a0f] text-white flex flex-col items-center justify-center px-6 py-20">
       {/* Glow */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#00d4ff]/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative max-w-2xl w-full text-center flex flex-col gap-12">
+      <div className="relative max-w-2xl w-full flex flex-col gap-16">
 
         {/* Logo */}
-        <div>
-          <span className="text-2xl font-bold tracking-tight">
-            <span className="text-[#00d4ff]">Human</span>ents
-          </span>
+        <div className="flex justify-center">
+          <Logo bg="dark" />
         </div>
 
         {/* Coming Soon */}
-        <div className="flex flex-col gap-4">
+        <div className="text-center flex flex-col gap-4">
           <div className="inline-block self-center px-4 py-1.5 rounded-full border border-[#00d4ff]/30 bg-[#00d4ff]/5 text-[#00d4ff] text-sm font-medium tracking-widest uppercase">
             Coming Soon
           </div>
@@ -30,7 +45,7 @@ export default function Home() {
         </div>
 
         {/* Divider */}
-        <div className="w-px h-12 bg-white/10 self-center" />
+        <div className="w-full h-px bg-white/5" />
 
         {/* Vision & Mission */}
         <div className="flex flex-col gap-8 text-left">
@@ -61,8 +76,7 @@ export default function Home() {
           </a>
         </div>
 
-        {/* Footer */}
-        <p className="text-white/20 text-xs">
+        <p className="text-white/20 text-xs text-center">
           © 2025 Humanents · Zurich, Switzerland
         </p>
       </div>

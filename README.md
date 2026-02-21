@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# humanents-web
 
-## Getting Started
+Website for [humanents.ch](https://humanents.ch) — smart actuators for humanoid robots.
 
-First, run the development server:
+## Current state
+
+**Coming Soon** landing page with:
+- Logo: `humanents` in Space Grotesk bold — "human" in cyan→violet gradient (`#00d4ff → #7c3aed`), "ents" in white/black depending on background
+- Tagline: *"Give the builders their tools."*
+- Vision & Mission
+- Contact email: dheres@humanents.ch
+
+## Stack
+
+- **Framework**: Next.js 16 (App Router, TypeScript)
+- **Styling**: Tailwind CSS v4
+- **Fonts**: Space Grotesk (logo + body), Orbitron, Geist (loaded, available)
+- **Deployment**: Vercel (auto SSL, HTTP/2)
+- **Domain**: humanents.ch + www.humanents.ch (both with SSL via Let's Encrypt)
+- **Repo**: [github.com/heressan/humanents-web](https://github.com/heressan/humanents-web)
+
+## Local development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Load Node.js (nvm — required in WSL2)
+export NVM_DIR="$HOME/.nvm" && \. "$NVM_DIR/nvm.sh"
+
+# Install dependencies
+npm install
+
+# Run dev server (use a free port if 3000 is taken)
+npm run dev -- -p 3001
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3001](http://localhost:3001).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+> **WSL2 note**: Hot reload may not detect file changes on `/mnt/c/`. Restart the dev server after edits if the page doesn't update.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deploy
 
-## Learn More
+```bash
+# Push to GitHub
+git add . && git commit -m "message" && git push
 
-To learn more about Next.js, take a look at the following resources:
+# Manual production deploy
+source ~/.nvm/nvm.sh
+vercel --prod
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Vercel is authenticated as `heressan`. If the session expires, run `vercel login` and authenticate via browser (Chrome logged in as heressan).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## DNS (Infomaniak)
 
-## Deploy on Vercel
+| Type  | Name | Value                |
+|-------|------|----------------------|
+| A     | @    | 76.76.21.21          |
+| CNAME | www  | cname.vercel-dns.com |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Both `humanents.ch` and `www.humanents.ch` have valid SSL certificates (auto-renewed by Vercel every 90 days).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Brand decisions
+
+- **Logo**: Text-only, Space Grotesk bold
+  - `human` → gradient `#00d4ff` to `#7c3aed` (cyan → violet)
+  - `ents` → white on dark bg / `#0a0a0f` on light bg
+- **Background**: `#0a0a0f` (near black)
+- **Accent colors**: Cyan `#00d4ff`, Violet `#7c3aed`
+- **No icon** for now — consider a bearing/actuator SVG mark in a future iteration
+
+## Next steps (pending)
+
+- [ ] Add email waitlist (Resend / Mailchimp)
+- [ ] Build full product landing page (SmartAct modules SA-40 / SA-120 / SA-300)
+- [ ] Integrate Stripe for pre-orders
+- [ ] Add favicon using the logo gradient

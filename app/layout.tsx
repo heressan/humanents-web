@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Space_Grotesk, Orbitron } from "next/font/google";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -26,7 +28,12 @@ export const metadata: Metadata = {
   title: "Humanents — Smart Actuators for Humanoid Robots",
   description:
     "Integrated smart actuator modules for the next generation of humanoid robots. 48V native, EtherCAT, CE certified.",
-  keywords: ["humanoid robots", "smart actuators", "EtherCAT", "robotics components"],
+  keywords: [
+    "humanoid robots",
+    "smart actuators",
+    "EtherCAT",
+    "robotics components",
+  ],
 };
 
 export default function RootLayout({
@@ -39,7 +46,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} ${orbitron.variable} antialiased`}
       >
-        {children}
+        <Navbar />
+        <main className="pt-16">{children}</main>
+        <Footer />
       </body>
     </html>
   );

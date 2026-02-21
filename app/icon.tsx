@@ -1,12 +1,12 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "fs/promises";
+import { join } from "path";
 
 export const size = { width: 32, height: 32 };
 export const contentType = "image/png";
 
 export default async function Icon() {
-  const spaceGrotesk = await fetch(
-    "https://fonts.gstatic.com/s/spacegrotesk/v16/V8mDoQDjQSkFtoMM3T6r8E7mF71Q-gozuPTPgYv.woff2"
-  ).then((res) => res.arrayBuffer());
+  const font = await readFile(join(process.cwd(), "public/fonts/SpaceGrotesk-Bold.ttf"));
 
   return new ImageResponse(
     (
@@ -40,7 +40,7 @@ export default async function Icon() {
       fonts: [
         {
           name: "Space Grotesk",
-          data: spaceGrotesk,
+          data: font,
           weight: 700,
         },
       ],

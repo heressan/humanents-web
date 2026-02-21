@@ -1,5 +1,3 @@
-import WaitlistForm from "./WaitlistForm";
-
 function Logo({ bg = "dark" }: { bg?: "dark" | "light" }) {
   return (
     <span
@@ -44,15 +42,6 @@ export default function Home() {
               their tools.
             </span>
           </h1>
-        </div>
-
-        {/* Waitlist */}
-        <div className="flex flex-col gap-4 items-center text-center">
-          <p className="text-white/50 text-sm max-w-sm">
-            We&apos;re building the open actuation platform for humanoid robots.
-            Be the first to know when we launch.
-          </p>
-          <WaitlistForm />
         </div>
 
         {/* Divider */}

@@ -1,3 +1,5 @@
+import WaitlistForm from "./WaitlistForm";
+
 function Logo({ bg = "dark" }: { bg?: "dark" | "light" }) {
   return (
     <span
@@ -44,6 +46,15 @@ export default function Home() {
           </h1>
         </div>
 
+        {/* Waitlist */}
+        <div className="flex flex-col gap-4 items-center text-center">
+          <p className="text-white/50 text-sm max-w-sm">
+            We&apos;re building the open actuation platform for humanoid robots.
+            Be the first to know when we launch.
+          </p>
+          <WaitlistForm />
+        </div>
+
         {/* Divider */}
         <div className="w-full h-px bg-white/5" />
 
@@ -65,20 +76,19 @@ export default function Home() {
           </div>
         </div>
 
-        {/* CTA */}
-        <div className="flex flex-col gap-3 items-center">
-          <p className="text-white/30 text-sm">Stay in the loop</p>
+        {/* Footer */}
+        <div className="flex flex-col items-center gap-3">
           <a
             href="mailto:dheres@humanents.ch"
-            className="px-6 py-3 border border-white/15 rounded-full text-white/60 hover:text-white hover:border-white/40 transition-colors text-sm"
+            className="text-white/30 hover:text-white/60 transition-colors text-sm"
           >
             dheres@humanents.ch
           </a>
+          <p className="text-white/20 text-xs">
+            © 2025 Humanents · Zurich, Switzerland
+          </p>
         </div>
 
-        <p className="text-white/20 text-xs text-center">
-          © 2025 Humanents · Zurich, Switzerland
-        </p>
       </div>
     </main>
   );
